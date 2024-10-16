@@ -188,10 +188,10 @@ class iso6937(codecs.Codec):
         return (''.join(map(chr, output)), len(inputdata))
 
     def search(self, name):
-        if name in ('iso6937', 'iso_6937-2'):
+        if name in ('iso6937', 'iso_6937_2'):
             return codecs.CodecInfo(self.encode,
                                     self.decode,
-                                    name='iso_6937-2')
+                                    name='iso_6937_2')
 
     def encode(self, inputdata):
         pass
@@ -280,7 +280,7 @@ class iso8859_5_stl(stl_encoding):
     A derived class which represents the ISO-8859-5 encoding in STL (CCT 01)
     """
     def __init__(self):
-        stl_encoding.__init__(self, 'iso-8859-5')
+        stl_encoding.__init__(self, 'iso_8859_5')
 
 
 class iso8859_6_stl(stl_encoding):
@@ -288,7 +288,7 @@ class iso8859_6_stl(stl_encoding):
     A derived class which represents the ISO-8859-6 encoding in STL (CCT 02)
     """
     def __init__(self):
-        stl_encoding.__init__(self, 'iso-8859-6')
+        stl_encoding.__init__(self, 'iso_8859_6')
 
 
 class iso8859_7_stl(stl_encoding):
@@ -296,7 +296,7 @@ class iso8859_7_stl(stl_encoding):
     A derived class which represents the ISO-8859-7 encoding in STL (CCT 03)
     """
     def __init__(self):
-        stl_encoding.__init__(self, 'iso-8859-7')
+        stl_encoding.__init__(self, 'iso_8859_7')
 
 
 class iso8859_8_stl(stl_encoding):
@@ -304,7 +304,7 @@ class iso8859_8_stl(stl_encoding):
     A derived class which represents the ISO-8859-8 encoding in STL (CCT 04)
     """
     def __init__(self):
-        stl_encoding.__init__(self, 'iso-8859-8')
+        stl_encoding.__init__(self, 'iso_8859_8')
 
 
 def _getSubtitleNumber(entry):
@@ -410,11 +410,11 @@ class STL:
         # Matching the Character Code Table Number (CCT).
         # The CCT is used to decode the Text Field (TF) of the TTI Blocks.
         self.codePage = {
-            b'00': 'iso_6937-2',
-            b'01': 'iso-8859-5_stl',
-            b'02': 'iso-8859-6_stl',
-            b'03': 'iso-8859-7_stl',
-            b'04': 'iso-8859-8_stl',
+            b'00': 'iso_6937_2',
+            b'01': 'iso_8859_5_stl',
+            b'02': 'iso_8859_6_stl',
+            b'03': 'iso_8859_7_stl',
+            b'04': 'iso_8859_8_stl',
         }[GSI['CCT']]
         # Number of TTI Blocks
         self.numberOfTTI = int(GSI['TNB'])
